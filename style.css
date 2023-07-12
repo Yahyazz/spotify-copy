@@ -6,6 +6,7 @@
   --white-color: #ffffff;
   --secondary-white-color: #b3b3b3;
   --accent-color: #1db954;
+  --bright-accent: #1ed760;
 }
 
 * {
@@ -48,6 +49,10 @@ body {
 
 img {
   width: 3rem;
+}
+
+p {
+  color: var(--secondary-white-color);
 }
 
 .container {
@@ -162,12 +167,28 @@ article h2 {
 
 .card-sm-img {
   aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .card-img {
   aspect-ratio: 1/1;
   width: 100%;
   border-radius: 8px;
+  object-fit: cover;
+}
+
+.container-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.group-title {
+  width: 75%;
+}
+
+.group-button {
+  width: 25%;
 }
 
 .card-md {
@@ -185,6 +206,11 @@ article h2 {
 .card-md:hover {
   cursor: pointer;
   background-color: var(--grey-up-color);
+}
+
+.card-md:hover .button {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .card-md:hover .card-img {
@@ -207,9 +233,63 @@ article h2 {
 }
 
 .head-tittle {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+h2.head-tittle {
+  margin-top: 1rem;
 }
 
 h3.head-tittle {
-  margin-top: 1rem;
+  margin-top: 2rem;
+}
+
+.button {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  background: none;
+  border: none;
+  opacity: 0;
+}
+
+.button:hover:before,
+.button:hover:after {
+  background-color: var(--bright-accent);
+}
+
+.button {
+  width: 10px;
+  height: 10px;
+  transition: all 0.5s ease;
+}
+
+.button:before,
+.button:after {
+  transition: all 0.5s ease;
+  position: absolute;
+  content: '';
+  left: 20px;
+  top: 0;
+  width: 20px;
+  height: 30px;
+  background-color: var(--secondary-white-color);
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.button:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.active .button::before,
+.active .button::after {
+  background-color: var(--bright-accent);
+}
+
+.active .button {
+  opacity: 1;
 }
